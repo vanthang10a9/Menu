@@ -14,28 +14,29 @@ import com.squareup.picasso.Picasso;
 import java.io.Console;
 
 public class MainActivity extends AppCompatActivity {
-    private EditText mEditText;
-    private TextView mTextView;
-    private Button mButton;
-    private Integer x;
+    private Button mButtonLoadImageIternet;
+    private Button mButtonRandom;
+    private Intent intent;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        mEditText = (EditText) findViewById(R.id.edittext);
-        mTextView = (TextView) findViewById(R.id.textview);
-        mButton = (Button) findViewById(R.id.button);
 
-        System.out.println(x);
+        mButtonRandom = (Button) findViewById(R.id.button);
+        mButtonLoadImageIternet = (Button) findViewById(R.id.buttonLoadImageInternet);
 
-
-        mButton.setOnClickListener(new View.OnClickListener() {
+        mButtonRandom.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-//                Random random = new Random();
-//                x = random.nextInt(5 + 2);
-//                mTextView.setText(x.toString());
-                Intent intent=new Intent(MainActivity.this,Random.class);
+                intent=new Intent(MainActivity.this,Random.class);
+                MainActivity.this.startActivity(intent);
+            }
+        });
+
+        mButtonLoadImageIternet.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                intent = new Intent(MainActivity.this, LoadImageInternet.class);
                 MainActivity.this.startActivity(intent);
             }
         });

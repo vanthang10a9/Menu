@@ -25,15 +25,12 @@ public class Random extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.random);
 
-        mTextView = (TextView) findViewById(R.id.textview);
-        mEditText = findViewById(R.id.edittext);
+        mEditText = findViewById(R.id.editText);
         mButton = findViewById(R.id.button);
 
         mButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
-
                 if(mEditText.getText().toString().isEmpty()){
                     showAlertDiaolog();
                 }else {

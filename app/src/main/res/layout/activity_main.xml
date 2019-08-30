@@ -1,18 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    android:layout_height="match_parent"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    xmlns:android="http://schemas.android.com/apk/res/android" >
-    <EditText
-        android:id="@+id/edittext"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
-    <TextView
-        android:id="@+id/textview"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+    android:layout_height="match_parent"
+    android:gravity="center"
+    android:orientation="vertical">
+
     <Button
-        android:id="@+id/button"
+        android:id="@+id/buttonRandom"
+        android:text="Random"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+    <Button
+        android:id="@+id/buttonLoadImageInternet"
+        android:text="Load Image Internet"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content" />
 
