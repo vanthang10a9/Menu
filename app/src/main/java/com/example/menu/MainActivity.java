@@ -22,14 +22,14 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        mButtonRandom = (Button) findViewById(R.id.button);
+        mButtonRandom = (Button) findViewById(R.id.buttonRandom);
         mButtonLoadImageIternet = (Button) findViewById(R.id.buttonLoadImageInternet);
 
         mButtonRandom.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 intent=new Intent(MainActivity.this,Random.class);
-                MainActivity.this.startActivity(intent);
+                startActivity(intent);
             }
         });
 
@@ -37,7 +37,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 intent = new Intent(MainActivity.this, LoadImageInternet.class);
-                MainActivity.this.startActivity(intent);
+                startActivity(intent);
             }
         });
     }

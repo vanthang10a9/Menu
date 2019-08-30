@@ -2,6 +2,7 @@ package com.example.menu;
 
 import android.app.AlertDialog;
 import android.app.Dialog;
+import android.content.DialogInterface;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
@@ -40,9 +41,21 @@ public class Random extends AppCompatActivity {
         });
     }
     private void showAlertDiaolog(){
-        AlertDialog.Builder builder  = new AlertDialog.Builder(this);
+        final AlertDialog.Builder builder  = new AlertDialog.Builder(this);
         builder.setTitle("Thông báo");
-        builder.setMessage("Bạn có muốn nhập giới hạn random trên!");
+        builder.setMessage("Bạn có muốn nhập giới hạn random trên!")
+                .setPositiveButton("Có chứ", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+
+                    }
+                })
+                .setNegativeButton("Thôi khỏi", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+
+                    }
+                });
 
         AlertDialog alertDialog = builder.create();
         alertDialog.show();

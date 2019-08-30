@@ -19,6 +19,8 @@
         </activity>
         <activity android:name=".Random"
             android:label="Random"/>
+        <activity android:name=".LoadImageInternet"
+            android:label="Load Image from Internet"/>
     </application>
 
 </manifest>

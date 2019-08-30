@@ -17,8 +17,10 @@ public class LoadImageInternet extends AppCompatActivity {
 
         mImageView = (ImageView) findViewById(R.id.image);
 
-        Picasso.with(getApplicationContext())
-                .load("https://cdn.viblo.asia/_nuxt/img/fbfe575.svg")
+        Picasso.with(this)
+                .load("https://duythanhcse.files.wordpress.com/2018/02/androidcoban_mattruoc.png")
+                .error(R.drawable.ic_launcher_background)
+                .placeholder(R.drawable.ic_launcher_foreground)
                 .into(mImageView);
     }
 }
