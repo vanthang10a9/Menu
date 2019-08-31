@@ -17,7 +17,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".Random"
+        <activity android:name=".RandomNumber"
             android:label="Random"/>
         <activity android:name=".LoadImageInternet"
             android:label="Load Image from Internet"/>

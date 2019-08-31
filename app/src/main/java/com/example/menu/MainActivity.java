@@ -8,6 +8,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.squareup.picasso.Picasso;
 
@@ -28,10 +29,11 @@ public class MainActivity extends AppCompatActivity {
         mButtonRandom.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                intent=new Intent(MainActivity.this,Random.class);
+                intent=new Intent(MainActivity.this,RandomNumber.class);
                 startActivity(intent);
             }
         });
+
 
         mButtonLoadImageIternet.setOnClickListener(new View.OnClickListener() {
             @Override

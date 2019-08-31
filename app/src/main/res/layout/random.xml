@@ -9,12 +9,12 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content" />
     <EditText
-        android:id="@+id/editText"
-        android:hint="nhập số"
+        android:id="@+id/editTextGioiHanTop"
         android:layout_width="100dp"
         android:layout_height="wrap_content" />
     <TextView
-        android:id="@+id/numberRandom"
+        android:id="@+id/textViewNumberRandom"
+        android:text="0"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content" />
     <Button
