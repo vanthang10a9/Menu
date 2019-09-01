@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TableRow;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -18,7 +19,8 @@ import static android.widget.Toast.LENGTH_SHORT;
 
 public class RandomNumber extends AppCompatActivity {
     private TextView mTextView;
-    private EditText mEditText;
+    private EditText mEditTextMax;
+    private EditText mEditTextMin;
     private Button mButton;
 
     @Override
@@ -27,23 +29,40 @@ public class RandomNumber extends AppCompatActivity {
         setContentView(R.layout.random);
 
         mTextView = (TextView) findViewById(R.id.textViewNumberRandom);
-        mEditText = (EditText) findViewById(R.id.editTextGioiHanTop);
+        mEditTextMin = findViewById(R.id.editTextMin);
+        mEditTextMax = findViewById(R.id.editTextMax);
         mButton = (Button) findViewById(R.id.button);
 
         mButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                showAlertDiaolog();
+                showAlertDialog();
             }
         });
     }
-    private void showAlertDiaolog(){
-        if(!(mEditText.getText().toString().isEmpty())){
+
+    private void showAlertDialog() {
+        if (!(mEditTextMax.getText().toString().length() == 0) && !(mEditTextMin.getText().toString().isEmpty())) {
             runRandom();
-        }else {
-            AlertDialog.Builder builder  = new AlertDialog.Builder(this);
+        }
+        if (mEditTextMax.getText().toString().length() == 0 && !mEditTextMin.getText().toString().isEmpty()) {
+
+            AlertDialog.Builder builder = new AlertDialog.Builder(RandomNumber.this);
+            builder.setTitle("Thông báo")
+                    .setMessage("Chỉ nhập Min khi đã nhập Max rồi")
+                    .setNegativeButton("Đã hiểu", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialogInterface, int i) {
+                            dialogInterface.dismiss();
+                        }
+                    });
+            AlertDialog alertDialog = builder.create();
+            alertDialog.show();
+        }
+        if (!mEditTextMax.getText().toString().isEmpty() && mEditTextMin.getText().toString().isEmpty()) {
+            AlertDialog.Builder builder = new AlertDialog.Builder(this);
             builder.setTitle("Thông báo");
-            builder.setMessage("Bạn có muốn nhập giới hạn random trên!")
+            builder.setMessage("Bạn chưa nhập đầy đủ Min, Max. Bạn có muốn nhập lại?")
                     .setPositiveButton("Có chứ", new DialogInterface.OnClickListener() {
                         @Override
                         public void onClick(DialogInterface dialogInterface, int i) {
@@ -54,22 +73,35 @@ public class RandomNumber extends AppCompatActivity {
                         @Override
                         public void onClick(DialogInterface dialogInterface, int i) {
                             runRandom();
-                            dialogInterface.dismiss();
                         }
                     });
             AlertDialog alertDialog = builder.create();
             alertDialog.show();
         }
     }
-    private void runRandom(){
-        mEditText.setText("đã nhấn button");
-//        Random random = new Random();
-//        if(mEditText.getText().toString().isEmpty()){
-//            mTextView.setText(random.nextInt());
-//        }else{
-//            int max=Integer.parseInt(mEditText.getText().toString());
-//            int randomNumber = random.nextInt(max);
-//            mTextView.setText(randomNumber);
-//        }
+
+
+    private void runRandom() {
+        Random random = new Random();
+        String editTextMax = mEditTextMax.getText().toString();
+        String editTextMin = mEditTextMin.getText().toString();
+        if (editTextMax.isEmpty() && editTextMin.isEmpty()) {
+            mTextView.setText(String.valueOf(random.nextInt()));
+        }
+        if (editTextMin.isEmpty() && !editTextMax.isEmpty()) {
+            int randomNumber = random.nextInt(Integer.parseInt(editTextMax));
+            mTextView.setText(String.valueOf(randomNumber));
+        }
+        if (!editTextMax.isEmpty() && !editTextMin.isEmpty()) {
+            int min = 0, max = 0;
+            try {
+                max = Integer.getInteger(mEditTextMax.getText().toString());
+                min = Integer.parseInt(editTextMin);
+            } catch (NumberFormatException e) {
+                Toast.makeText(this, "edit text ko phai số", LENGTH_SHORT).show();
+            }
+            int randomNumber = random.nextInt((max - min + 1) + min);
+            mTextView.setText(String.valueOf(randomNumber));
+        }
     }
 }
