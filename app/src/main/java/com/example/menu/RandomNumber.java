@@ -59,7 +59,8 @@ public class RandomNumber extends AppCompatActivity {
             AlertDialog alertDialog = builder.create();
             alertDialog.show();
         }
-        if (!mEditTextMax.getText().toString().isEmpty() && mEditTextMin.getText().toString().isEmpty()) {
+        if ((!mEditTextMax.getText().toString().isEmpty() || mEditTextMax.getText().toString().isEmpty())
+                && mEditTextMin.getText().toString().isEmpty()) {
             AlertDialog.Builder builder = new AlertDialog.Builder(this);
             builder.setTitle("Thông báo");
             builder.setMessage("Bạn chưa nhập đầy đủ Min, Max. Bạn có muốn nhập lại?")
