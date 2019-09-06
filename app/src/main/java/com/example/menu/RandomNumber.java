@@ -6,7 +6,6 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.TableRow;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -96,12 +95,20 @@ public class RandomNumber extends AppCompatActivity {
         if (!editTextMax.isEmpty() && !editTextMin.isEmpty()) {
             int min = 0, max = 0;
             try {
-                max = Integer.getInteger(mEditTextMax.getText().toString());
+                max = Integer.parseInt(editTextMax);
                 min = Integer.parseInt(editTextMin);
             } catch (NumberFormatException e) {
                 Toast.makeText(this, "edit text ko phai số", LENGTH_SHORT).show();
             }
-            int randomNumber = random.nextInt((max - min + 1) + min);
+            if(min>max){
+                min = max+min;
+                max = min-max;
+                min = min-max;
+                mEditTextMax.setText(String.valueOf(max));
+                mEditTextMin.setText(String.valueOf(min));
+                Toast.makeText(this, "Đã hoán đổi Min, Max cho phù hợp", LENGTH_SHORT).show();
+            }
+            int randomNumber = random.nextInt(max - min + 1) + min;
             mTextView.setText(String.valueOf(randomNumber));
         }
     }
